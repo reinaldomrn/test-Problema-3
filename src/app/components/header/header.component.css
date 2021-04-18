@@ -1,0 +1,11 @@
+.font-20 a {
+  font-size: 20px;
+  color: rgb(255, 0, 0);
+  position: absolute;
+  right: 35px;
+  text-decoration: none;
+}
+
+.font-20 a:hover {
+  color: rgb(218, 4, 4);
+}

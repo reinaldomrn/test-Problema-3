@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-success">Listado de Reservas</h3>
+      <hr>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 ">
+      <div class="form-group float-right">
+        <div class="form-inline my-2 my-lg-0">
+          <select [(ngModel)]="type" name="type" class="form-control mr-sm-2" (change)="filter()">
+            <option value="like">Filtrar por BookingId</option>
+            <option value="igual">Filtrar por precio igual a:</option>
+            <option value="mayor">Filtrar por precio mayor a:</option>
+            <option value="menor">Filtrar por precio menor a:</option>
+          </select>
+          <input [(ngModel)]="value" class="form-control mr-sm-2" type="text" placeholder="Buscar"
+            (keyup)="filter()">
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">BookingId</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Fecha Creación</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataGrillaLocal">
+            <td>{{ row.bookingId }}</td>
+            <td>{{ row.firstName }} {{ row.lastName }}</td>
+            <td>{{ row.bookingTime }}</td>
+            <td>{{ row.streetAddress }}</td>
+            <td>${{ row.bookingPrice | number: '3.0' }}</td>
+          </tr>
+          <tr *ngIf="dataGrillaLocal.length <= 0 && star">
+            <td colspan="5" class="text-danger text-center"> No existen registros para esta busqueda. </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
